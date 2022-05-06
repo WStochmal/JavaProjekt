@@ -57,6 +57,29 @@ public class ControllerDesktop implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    public void openCardsPage(ActionEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("Cards.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void openLoanPage(ActionEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("Loan.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void openTransactionHistoryPage(ActionEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("TransferHistory.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
     public void logOut(ActionEvent event) throws IOException {
         Data.CardList.clear();
@@ -91,15 +114,5 @@ public class ControllerDesktop implements Initializable {
     }
 
 
-    public void openCardsPage(ActionEvent event) {
 
-    }
-
-    public void openLoanPage(ActionEvent event) {
-
-    }
-
-    public void openTransactionHistoryPage(ActionEvent event) {
-
-    }
 }
