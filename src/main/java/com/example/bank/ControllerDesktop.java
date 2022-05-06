@@ -1,5 +1,9 @@
 package com.example.bank;
 
+import javafx.animation.Animation;
+import javafx.animation.AnimationTimer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,10 +12,15 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+//import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class ControllerDesktop implements Initializable {
@@ -22,6 +31,10 @@ public class ControllerDesktop implements Initializable {
 
     @FXML
     Button AccountButton;
+    @FXML
+    private Label time;
+    @FXML
+    Label welcomeUser;
 
     public void openDesktopPage(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Desktop.fxml"));
@@ -57,10 +70,26 @@ public class ControllerDesktop implements Initializable {
         stage.show();
     }
 
-    @Override
+
+   @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         AccountButton.setText(Data.Name + " " + Data.Surname);
+        welcomeUser.setText("Witaj, "+Data.Name);
+
+       initClock();
+
+
     }
+    private void initClock() {
+
+        Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            time.setText(LocalDateTime.now().format(formatter));
+        }), new KeyFrame(Duration.seconds(1)));
+        clock.setCycleCount(Animation.INDEFINITE);
+        clock.play();
+    }
+
 
     public void openCardsPage(ActionEvent event) {
 
