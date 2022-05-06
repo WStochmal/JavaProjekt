@@ -140,12 +140,12 @@
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" stroke="WHITE" strokeType="INSIDE" width="40.0" />
                            </children>
                         </VBox>
-                        <Label prefHeight="100.0" prefWidth="500.0" text="Witaj, ">
+                        <Label fx:id="welcomeUser" prefHeight="100.0" prefWidth="500.0" text="Witaj, ">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="100.0" prefWidth="240.0" text="15:00 6 Maj 2022" textAlignment="CENTER" textFill="#7c7c7c">
+                        <Label fx:id="time" alignment="CENTER" prefHeight="100.0" prefWidth="240.0" text="" textAlignment="CENTER" textFill="#7c7c7c">
                            <font>
                               <Font size="18.0" />
                            </font>

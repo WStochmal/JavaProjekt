@@ -146,7 +146,7 @@
                                         <Font size="18.0" />
                                     </font>
                                 </Label>
-                                <Label alignment="CENTER" prefHeight="100.0" prefWidth="240.0" text="15:00 6 Maj 2022" textAlignment="CENTER" textFill="#7c7c7c">
+                                <Label fx:id="time" alignment="CENTER" prefHeight="100.0" prefWidth="240.0" text="15:00 6 Maj 2022" textAlignment="CENTER" textFill="#7c7c7c">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
@@ -210,6 +210,9 @@
                                  <font>
                                     <Font size="18.0" />
                                  </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </Button>
                            </children>
                         </VBox>
