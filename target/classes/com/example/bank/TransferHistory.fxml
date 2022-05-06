@@ -164,8 +164,8 @@
                         <TableView fx:id="table" prefHeight="573.0" prefWidth="750.0">
                           <columns>
                             <TableColumn fx:id="Numer" prefWidth="88.0" text="Numer" />
-                            <TableColumn fx:id="Odbiorca" minWidth="5.0" prefWidth="180.0" text="Rachunek odbiorcy" />
-                              <TableColumn fx:id="Nadawca" minWidth="5.0" prefWidth="180.0" text="Rachunek nadawcy" />
+                            <TableColumn fx:id="Odbiorca" minWidth="5.0" prefWidth="180.0" text="Rachunek nadawcy" />
+                              <TableColumn fx:id="Nadawca" minWidth="5.0" prefWidth="180.0" text="Rachunek odbiorcy" />
                               <TableColumn minWidth="0.0" prefWidth="0.0" text="Kwota" />
                               <TableColumn fx:id="Tytyl" minWidth="5.0" prefWidth="206.0" text="Data" />
                               <TableColumn fx:id="Kwota" minWidth="5.0" prefWidth="95.0" text="Kwota" />

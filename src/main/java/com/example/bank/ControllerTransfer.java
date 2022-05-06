@@ -94,8 +94,8 @@ public class ControllerTransfer implements Initializable {
         stage.show();
     }
 
-    public void openLoanPage(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("Cards.fxml"));
+    public void openLoanPage(ActionEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("Loan.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -204,6 +204,11 @@ public class ControllerTransfer implements Initializable {
         clock.play();
     }
 
-    public void openTransactionHistoryPage(ActionEvent event) {
+    public void openTransactionHistoryPage(ActionEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("TransferHistory.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

@@ -94,7 +94,12 @@ public class ControllerLoan implements Initializable {
         stage.show();
     }
 
-    public void openTransactionHistoryPage(ActionEvent actionEvent) {
+    public void openTransactionHistoryPage(ActionEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("TransferHistory.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void applicate(ActionEvent actionEvent) throws SQLException {

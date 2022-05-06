@@ -98,6 +98,8 @@ public class ControllerAccount implements Initializable {
     }
 
 
+
+
     private void initClock() {
 
         Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
@@ -108,12 +110,22 @@ public class ControllerAccount implements Initializable {
         clock.play();
     }
 
-    public void openTransactionHistoryPage(ActionEvent event) {
+    public void openTransactionHistoryPage(ActionEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("TransferHistory.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void openCardsPage(ActionEvent event) {
     }
 
-    public void openLoanPage(ActionEvent event) {
+    public void openLoanPage(ActionEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("Loan.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }
