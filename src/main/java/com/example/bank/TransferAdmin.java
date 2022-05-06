@@ -1,6 +1,6 @@
 package com.example.bank;
 
-public class Transfer {
+public class TransferAdmin {
     public String getNumber() {
         return Number;
     }
@@ -41,13 +41,28 @@ public class Transfer {
         Amount = amount;
     }
 
-    private String Number,Sender,Receiver,Title,Amount;
-    public Transfer(String Number, String Sender, String Receiver, String Title, String Amount){
+    private String Number;
+    private String Sender;
+    private String Receiver;
+
+    public String getData() {
+        return Data;
+    }
+
+    public void setData(String data) {
+        Data = data;
+    }
+
+    private String Data;
+    private String Amount;
+    private String Title;
+    public TransferAdmin(String Number, String Sender, String Receiver, String Title, String Amount, String Data){
         this.Amount = Amount;
         this.Number = Number;
         this.Receiver = Receiver;
         this.Sender = Sender;
         this.Title = Title;
+        this.Data = Data;
     }
 }
 

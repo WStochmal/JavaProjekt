@@ -109,10 +109,13 @@ public class ControllerTransfer implements Initializable {
         String Money = Amount.getText();
         float AmountMoney = Float.parseFloat(Money);
         float SenderMoney = AmountMoney;
+        int error = 0;
         if(Money.charAt(0) == '0'|| Money.charAt(0) == '-'){
-            warning.setText("Kwota nie musi być większa od 0");
+            warning.setText("Kwota musi być większa od 0");
+            error = 1;
         }else if(ReceiverAccountNumber.length()!=9){
             warning.setText("Rachunek musi mieć 9 cyfr");
+            error = 2;
         } else if (SenderAccountNumber.charAt(0) != ReceiverAccountNumber.charAt(0)) {
 
             if(SenderAccountNumber.charAt(0) == '1' && ReceiverAccountNumber.charAt(0) == '2'){
@@ -146,7 +149,7 @@ public class ControllerTransfer implements Initializable {
         String MyMoney = resultSet.getString("Dostepne_srodki");
         Float MineMoney = Float.valueOf(MyMoney);
 
-        if(AmountMoney > MineMoney){
+        if(AmountMoney > MineMoney && error ==0){
             //warning.setText("Nie masz wystarczająco dużo środków");
             DialogUtilities.dialogFailure("Brak środków aby wykonać ten przelew");
         }else {
