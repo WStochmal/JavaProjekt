@@ -99,12 +99,9 @@ public class ControllerLogin {
                     Data.CardList.get(i).getName();
                 }
                 if (Type.equals("2")) {
-                    System.out.println("Kurwa");
                     root = FXMLLoader.load(getClass().getResource("AdminDesktopPanel.fxml"));
                     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    scene = new Scene(root, 1200, 800);
-                    stage.setX(350);
-                    stage.setY(50);
+                    scene = new Scene(root);
                     stage.setScene(scene);
                     stage.show();
                 }else {
