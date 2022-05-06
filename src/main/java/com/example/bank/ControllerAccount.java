@@ -1,5 +1,8 @@
 package com.example.bank;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,17 +11,26 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class ControllerAccount implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    @FXML
+    private Label time;
 
     @FXML
     Button AccountButton;
@@ -83,6 +95,18 @@ public class ControllerAccount implements Initializable {
         Wiek.setText(String.valueOf(Data.Age));
         email.setText(Data.Email);
         telefon.setText(Data.Tel);
+        initClock();
+    }
+
+
+    private void initClock() {
+
+        Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            time.setText(LocalDateTime.now().format(formatter));
+        }), new KeyFrame(Duration.seconds(1)));
+        clock.setCycleCount(Animation.INDEFINITE);
+        clock.play();
     }
 
     public void openTransactionHistoryPage(ActionEvent event) {
