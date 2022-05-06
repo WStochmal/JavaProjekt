@@ -21,21 +21,21 @@ public class ControllerAccount implements Initializable {
     private Parent root;
 
     @FXML
-    Button Welcome;
+    Button AccountButton;
     @FXML
-    Label Name;
+    Label Imie;
     @FXML
-    Label Surname;
+    Label Nazwisko;
     @FXML
-    Label ID;
+    Label Pesel;
     @FXML
-    Label Age;
+    Label Wiek;
     @FXML
-    Label Sex;
+    Label Plec;
     @FXML
-    Label Email;
+    Label email;
     @FXML
-    Label Tel;
+    Label telefon;
 
 
     public void openDesktopPage(ActionEvent event) throws IOException {
@@ -75,13 +75,22 @@ public class ControllerAccount implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("Siema Zdzichu");
-        Welcome.setText(Data.Name + " " + Data.Surname);
-        Name.setText("Imie: " + Data.Name);
-        Surname.setText("Nazwisko: " + Data.Surname);
-        ID.setText("Pesel: " + Data.ID);
-        Sex.setText("Pleć: " + Data.Sex);
-        Age.setText("Wiek: " + Data.Age);
-        Email.setText("Email: " + Data.Email);
-        Tel.setText("Telefon: " + Data.Tel);
+        AccountButton.setText(Data.Name + " " + Data.Surname);
+        Imie.setText(Data.Name);
+        Nazwisko.setText(Data.Surname);
+        Pesel.setText(Data.ID);
+        Plec.setText(Data.Sex);
+        Wiek.setText(String.valueOf(Data.Age));
+        email.setText(Data.Email);
+        telefon.setText(Data.Tel);
+    }
+
+    public void openTransactionHistoryPage(ActionEvent event) {
+    }
+
+    public void openCardsPage(ActionEvent event) {
+    }
+
+    public void openLoanPage(ActionEvent event) {
     }
 }

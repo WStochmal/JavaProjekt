@@ -101,6 +101,7 @@ public class ControllerTransfer implements Initializable {
         String TransactionTitle = Title.getText();
         String Money = Amount.getText();
         float AmountMoney = Float.parseFloat(Money);
+        float SenderMoney = AmountMoney;
         if(Money.charAt(0) == '0'|| Money.charAt(0) == '-'){
             warning.setText("Kwota nie musi być większa od 0");
         }else if(ReceiverAccountNumber.length()!=9){
@@ -148,7 +149,7 @@ public class ControllerTransfer implements Initializable {
             PreparedStatement prepareStatement = connection.prepareStatement(Query);
             prepareStatement.execute();
 
-            Query = "UPDATE `Rachunek` SET `Dostepne_srodki`= (Dostepne_srodki - " + AmountMoney + ") WHERE `Nr_rachunku`= " + SenderAccountNumber;
+            Query = "UPDATE `Rachunek` SET `Dostepne_srodki`= (Dostepne_srodki - " + SenderMoney + ") WHERE `Nr_rachunku`= " + SenderAccountNumber;
 
             prepareStatement = connection.prepareStatement(Query);
             prepareStatement.execute();
