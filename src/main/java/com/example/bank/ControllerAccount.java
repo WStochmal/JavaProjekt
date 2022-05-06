@@ -46,7 +46,7 @@ public class ControllerAccount implements Initializable {
         stage.show();
     }
     public void openTransactionPage(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("Transaction.fxml"));
+        root = FXMLLoader.load(getClass().getResource("Transfer.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
