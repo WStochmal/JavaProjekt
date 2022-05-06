@@ -8,7 +8,7 @@ public class DialogUtilities {
         Alert message= new Alert(Alert.AlertType.INFORMATION);
         message.setTitle("Sukces");
         message.setHeaderText("Sukces");
-        message.setContentText("Przelew został pomyślnie wykonany");
+        message.setContentText(data);
         message.showAndWait();
 
 
