@@ -86,7 +86,6 @@ public class ControllerAccount implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Siema Zdzichu");
         AccountButton.setText(Data.Name + " " + Data.Surname);
         Imie.setText(Data.Name);
         Nazwisko.setText(Data.Surname);
