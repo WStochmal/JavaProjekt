@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bank.ControllerDesktop">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="com.example.bank.ControllerTransferHistory">
     <left>
         <AnchorPane prefHeight="400.0" prefWidth="250.0" style="-fx-background-color: #373F48;" BorderPane.alignment="CENTER">
             <children>
@@ -92,7 +92,7 @@
                                 <Insets left="10.0" />
                             </VBox.margin>
                         </ToggleButton>
-                        <ToggleButton alignment="CENTER_LEFT" mnemonicParsing="false" onAction="#logout" prefHeight="40.0" prefWidth="230.0" style="-fx-background-color: transparent;" text="Wyloguj" textFill="#fffdfd">
+                        <ToggleButton alignment="CENTER_LEFT" mnemonicParsing="false" onAction="#logOut" prefHeight="40.0" prefWidth="230.0" style="-fx-background-color: transparent;" text="Wyloguj" textFill="#fffdfd">
                             <font>
                                 <Font size="18.0" />
                             </font>
