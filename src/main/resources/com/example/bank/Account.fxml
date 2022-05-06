@@ -37,7 +37,7 @@
                                 <Insets left="10.0" />
                             </VBox.margin>
                         </ToggleButton>
-                        <ToggleButton alignment="CENTER_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="230.0" style="-fx-background-color: transparent;" text="Wyloguj" textFill="#fffdfd">
+                        <ToggleButton alignment="CENTER_LEFT" mnemonicParsing="false" onAction="#logOut" prefHeight="40.0" prefWidth="230.0" style="-fx-background-color: transparent;" text="Wyloguj" textFill="#fffdfd">
                             <font>
                                 <Font size="18.0" />
                             </font>

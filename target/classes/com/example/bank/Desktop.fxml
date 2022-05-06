@@ -44,7 +44,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ToggleButton>
-                  <ToggleButton alignment="CENTER_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="230.0" style="-fx-background-color: transparent;" text="Wyloguj" textFill="#fffdfd">
+                  <ToggleButton alignment="CENTER_LEFT" mnemonicParsing="false" onAction="#logOut" prefHeight="40.0" prefWidth="230.0" style="-fx-background-color: transparent;" text="Wyloguj" textFill="#fffdfd">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -60,7 +60,7 @@
                   </ToggleButton>
                </children>
             </VBox>
-            <Button layoutX="5.0" layoutY="10.0" mnemonicParsing="false" onAction="#openAccountPage" prefHeight="80.0" prefWidth="230.0" style="-fx-background-color: transparent;" text="Wojciech Stochmal" textFill="WHITE">
+            <Button fx:id="AccountButton" layoutX="5.0" layoutY="10.0" mnemonicParsing="false" onAction="#openAccountPage" prefHeight="80.0" prefWidth="230.0" style="-fx-background-color: transparent;" text="Wojciech Stochmal" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>

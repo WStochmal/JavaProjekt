@@ -37,7 +37,7 @@
                                 <Insets left="10.0" />
                             </VBox.margin>
                         </ToggleButton>
-                        <ToggleButton alignment="CENTER_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="230.0" style="-fx-background-color: transparent;" text="Wyloguj" textFill="#fffdfd">
+                        <ToggleButton alignment="CENTER_LEFT" mnemonicParsing="false" onAction="#logOut" prefHeight="40.0" prefWidth="230.0" style="-fx-background-color: transparent;" text="Wyloguj" textFill="#fffdfd">
                             <font>
                                 <Font size="18.0" />
                             </font>
@@ -50,7 +50,7 @@
                         </ToggleButton>
                     </children>
                 </VBox>
-                <Button layoutX="5.0" layoutY="10.0" mnemonicParsing="false" onAction="#openAccountPage" prefHeight="80.0" prefWidth="230.0" style="-fx-background-color: transparent;" text="Wojciech Stochmal" textFill="WHITE">
+                <Button fx:id="Welcome" layoutX="5.0" layoutY="10.0" mnemonicParsing="false" onAction="#openAccountPage" prefHeight="80.0" prefWidth="230.0" style="-fx-background-color: transparent;" text="Wojciech Stochmal" textFill="WHITE">
                     <font>
                         <Font size="18.0" />
                     </font>
@@ -66,27 +66,27 @@
                         <Font size="24.0" />
                     </font>
                 </Label>
-            <Label layoutX="44.0" layoutY="125.0" text="Imię:">
+            <Label fx:id="Name" layoutX="44.0" layoutY="125.0" text="Imię:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="44.0" layoutY="152.0" text="Nazwisko:">
+            <Label fx:id="Surname" layoutX="44.0" layoutY="152.0" text="Nazwisko:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="44.0" layoutY="179.0" text="Pesel">
+            <Label fx:id="ID" layoutX="44.0" layoutY="179.0" text="Pesel">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="43.0" layoutY="206.0" text="Wiek">
+            <Label fx:id="Age" layoutX="43.0" layoutY="206.0" text="Wiek">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="45.0" layoutY="233.0" text="Płeć">
+            <Label fx:id="Sex" layoutX="45.0" layoutY="233.0" text="Płeć">
                <font>
                   <Font size="18.0" />
                </font>
@@ -96,12 +96,12 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="43.0" layoutY="307.0" text="E-mail">
+            <Label fx:id="Email" layoutX="43.0" layoutY="307.0" text="E-mail">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="43.0" layoutY="334.0" text="Telefon">
+            <Label fx:id="Tel" layoutX="43.0" layoutY="334.0" text="Telefon">
                <font>
                   <Font size="18.0" />
                </font>
