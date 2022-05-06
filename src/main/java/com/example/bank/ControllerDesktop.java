@@ -46,6 +46,8 @@ public class ControllerDesktop implements Initializable {
     }
 
     public void logOut(ActionEvent event) throws IOException {
+        Data.CardList.clear();
+        Data.AccountList.clear();
         root = FXMLLoader.load(getClass().getResource("Login.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setX(600);

@@ -195,7 +195,7 @@
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="Title1" prefHeight="40.0" prefWidth="351.0" promptText="wpisz kwotę" style="-fx-background-color: transparent; -fx-border-color: #373F48; -fx-border-width: 0px 0px 2px 0px;">
+                              <TextField fx:id="Amount" prefHeight="40.0" prefWidth="351.0" promptText="wpisz kwotę" style="-fx-background-color: transparent; -fx-border-color: #373F48; -fx-border-width: 0px 0px 2px 0px;">
                                  <VBox.margin>
                                     <Insets left="26.0" />
                                  </VBox.margin>
@@ -213,6 +213,11 @@
                               </Button>
                            </children>
                         </VBox>
+                        <Label fx:id="warning" prefHeight="390.0" prefWidth="483.0" textFill="#ff1616">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
                      </children>
                   </HBox>
                     </children>

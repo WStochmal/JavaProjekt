@@ -125,7 +125,7 @@
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(240,240,242);" BorderPane.alignment="CENTER">
             <children>
-                <VBox layoutX="75.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white; -fx-background-radius: 0px 0px 50px 50px;">
+                <VBox layoutX="75.0" prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: white; -fx-background-radius: 0px 0px 50px 50px;">
                     <children>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                             <children>
@@ -153,7 +153,7 @@
                                 </Label>
                             </children>
                         </HBox>
-                  <HBox prefHeight="500.0" prefWidth="800.0">
+                  <HBox fx:id="kwota" prefHeight="556.0" prefWidth="800.0">
                      <children>
                         <VBox prefHeight="108.0" prefWidth="316.0">
                            <children>
@@ -189,6 +189,17 @@
                                     <Insets left="26.0" />
                                  </VBox.margin>
                               </TextField>
+                              <Rectangle fill="WHITE" height="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+                              <Label alignment="CENTER" prefHeight="50.0" prefWidth="174.0" text="Kwota przelewu:" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="Amount" prefHeight="40.0" prefWidth="351.0" promptText="wpisz kwotę" style="-fx-background-color: transparent; -fx-border-color: #373F48; -fx-border-width: 0px 0px 2px 0px;">
+                                 <VBox.margin>
+                                    <Insets left="26.0" />
+                                 </VBox.margin>
+                              </TextField>
                               <Button mnemonicParsing="false" onAction="#send" prefHeight="25.0" prefWidth="292.0" style="-fx-background-color: #373F48;" text="Wyślij przelew" textFill="WHITE">
                                  <VBox.margin>
                                     <Insets left="26.0" top="50.0" />
@@ -202,6 +213,11 @@
                               </Button>
                            </children>
                         </VBox>
+                        <Label fx:id="warning" prefHeight="390.0" prefWidth="483.0" textFill="#ff1616">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
                      </children>
                   </HBox>
                     </children>
