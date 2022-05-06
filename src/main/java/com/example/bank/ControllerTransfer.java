@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,6 +23,9 @@ public class ControllerTransfer implements Initializable {
 
     @FXML
     Button AccountButton;
+
+    @FXML
+    ChoiceBox choiceBox;
 
     public void openDesktopPage(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Desktop.fxml"));
@@ -79,5 +83,13 @@ public class ControllerTransfer implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         AccountButton.setText(Data.Name + " " + Data.Surname);
+
+        String AccountNumber = null;
+        for (int i = 0; i < Data.AccountList.size();i++){
+            Data.AccountList.get(i).getAccountNumber();
+            System.out.println(Data.AccountList.get(i).getAccountNumber());
+            choiceBox.getItems().add(AccountNumber);
+        }
+
     }
 }

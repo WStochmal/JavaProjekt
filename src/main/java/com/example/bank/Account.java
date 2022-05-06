@@ -15,4 +15,8 @@ public class Account {
         System.out.println(Nr_account);
         System.out.println(Available_money);
     }
+
+    public String getAccountNumber(){
+        return Nr_account;
+    }
 }
