@@ -15,6 +15,8 @@ public class Main extends Application {
         Object root = FXMLLoader.load(getClass().getResource("Login.fxml"));
         stage.initStyle(StageStyle.DECORATED);
         Scene scene = new Scene((Parent) root, 600, 400);
+        stage.setX(600);
+        stage.setY(260);
         stage.setTitle("JS&WS");
         stage.setScene(scene);
         stage.show();

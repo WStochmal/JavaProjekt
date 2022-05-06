@@ -70,6 +70,8 @@ public class ControllerLogin {
                 root = FXMLLoader.load(getClass().getResource("Desktop.fxml"));
                 stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                 scene = new Scene(root,1200,800);
+                stage.setX(350);
+                stage.setY(50);
                 stage.setScene(scene);
                 stage.show();
             }
