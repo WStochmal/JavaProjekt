@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -25,7 +26,14 @@ public class ControllerTransfer implements Initializable {
     Button AccountButton;
 
     @FXML
-    ChoiceBox choiceBox;
+    TextField ReceiverAccount;
+
+    @FXML
+    ChoiceBox SenderAccount;
+
+    @FXML
+    TextField Title;
+
 
     public void openDesktopPage(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Desktop.fxml"));
@@ -76,8 +84,14 @@ public class ControllerTransfer implements Initializable {
     }
 
     public void send(){
+        String SenderAccountNumber = (String) SenderAccount.getValue();
+        String ReceiverAccountNumber = ReceiverAccount.getText();
+        String TransactionTitle = Title.getText();
+        if(ReceiverAccountNumber.length()!=16){
+            System.out.println("hauhau");
+        } else if (SenderAccountNumber.charAt(0) != ReceiverAccountNumber.charAt(0)) {
 
-
+        }
     }
 
     @Override
@@ -88,7 +102,7 @@ public class ControllerTransfer implements Initializable {
         for (int i = 0; i < Data.AccountList.size();i++){
             AccountNumber = Data.AccountList.get(i).getAccountNumber();
             System.out.println(Data.AccountList.get(i).getAccountNumber());
-            choiceBox.getItems().add(AccountNumber);
+            SenderAccount.getItems().add(AccountNumber);
         }
 
     }
