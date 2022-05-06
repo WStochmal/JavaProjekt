@@ -15,10 +15,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
@@ -131,23 +128,43 @@ public class ControllerTransfer implements Initializable {
         LocalDateTime now = LocalDateTime.now();
         String Date = dtf.format(now);
 
-
-        String Query = "INSERT INTO `Transakcje`(`rachunek_nadawcy`, `rachunek_odbiorcy`, `kwota`, `Data`, `title`) VALUES (" + SenderAccountNumber + "," + ReceiverAccountNumber + "," + AmountMoney + "," +"'"+ Date + "'" + "," + "'" + TransactionTitle +"'" + ")";
+        String Query = "Select `Dostepne_srodki` from Rachunek where Nr_rachunku = "+ SenderAccountNumber;
 
         Connection connection = DriverManager.getConnection(URL,Login,Password);
-        PreparedStatement statement = connection.prepareStatement(Query);
-        statement.execute();
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(Query);
 
-        Query = "UPDATE `Rachunek` SET `Dostepne_srodki`= (Dostepne_srodki - "+ AmountMoney +") WHERE `Nr_rachunku`= "+SenderAccountNumber;
+        resultSet.next();
+        String MyMoney = resultSet.getString("Dostepne_srodki");
+        Float MineMoney = Float.valueOf(MyMoney);
 
-        statement = connection.prepareStatement(Query);
-        statement.execute();
+        if(AmountMoney > MineMoney){
+            warning.setText("Nie masz wystarczająco dużo środków");
+        }else {
 
-        Query = "UPDATE `Rachunek` SET `Dostepne_srodki`= (Dostepne_srodki + "+ AmountMoney +") WHERE `Nr_rachunku`= "+ReceiverAccountNumber;
+            Query = "INSERT INTO `Transakcje`(`rachunek_nadawcy`, `rachunek_odbiorcy`, `kwota`, `Data`, `title`) VALUES (" + SenderAccountNumber + "," + ReceiverAccountNumber + "," + AmountMoney + "," + "'" + Date + "'" + "," + "'" + TransactionTitle + "'" + ")";
 
-        statement = connection.prepareStatement(Query);
-        statement.execute();
 
+            PreparedStatement prepareStatement = connection.prepareStatement(Query);
+            prepareStatement.execute();
+
+            Query = "UPDATE `Rachunek` SET `Dostepne_srodki`= (Dostepne_srodki - " + AmountMoney + ") WHERE `Nr_rachunku`= " + SenderAccountNumber;
+
+            prepareStatement = connection.prepareStatement(Query);
+            prepareStatement.execute();
+
+            Query = "UPDATE `Rachunek` SET `Dostepne_srodki`= (Dostepne_srodki + " + AmountMoney + ") WHERE `Nr_rachunku`= " + ReceiverAccountNumber;
+
+            prepareStatement = connection.prepareStatement(Query);
+            prepareStatement.execute();
+
+
+            ReceiverAccount.setText("");
+            SenderAccount.setValue("");
+            Amount.setText("");
+            Title.setText("");
+
+        }
     }
 
     @Override
