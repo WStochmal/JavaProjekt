@@ -9,11 +9,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class ControllerTransfer implements Initializable {
@@ -33,6 +40,12 @@ public class ControllerTransfer implements Initializable {
 
     @FXML
     TextField Title;
+
+    @FXML
+    TextField Amount;
+
+    @FXML
+    Label warning;
 
 
     public void openDesktopPage(ActionEvent event) throws IOException {
@@ -58,6 +71,8 @@ public class ControllerTransfer implements Initializable {
     }
 
     public void logOut(ActionEvent event) throws IOException {
+        Data.CardList.clear();
+        Data.AccountList.clear();
         root = FXMLLoader.load(getClass().getResource("Login.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setX(600);
@@ -83,15 +98,56 @@ public class ControllerTransfer implements Initializable {
         stage.show();
     }
 
-    public void send(){
+    public void send() throws SQLException {
         String SenderAccountNumber = (String) SenderAccount.getValue();
         String ReceiverAccountNumber = ReceiverAccount.getText();
         String TransactionTitle = Title.getText();
-        if(ReceiverAccountNumber.length()!=16){
-            System.out.println("hauhau");
+        String Money = Amount.getText();
+        float AmountMoney = Float.parseFloat(Money);
+        if(Money.charAt(0) == '0'|| Money.charAt(0) == '-'){
+            warning.setText("Kwota nie musi być większa od 0");
+        }else if(ReceiverAccountNumber.length()!=9){
+            warning.setText("Rachunek musi mieć 9 cyfr");
         } else if (SenderAccountNumber.charAt(0) != ReceiverAccountNumber.charAt(0)) {
 
+            if(SenderAccountNumber.charAt(0) == '1' && ReceiverAccountNumber.charAt(0) == '2'){
+                AmountMoney = AmountMoney * CurrencyRates.PLNUSD;
+            } else if (SenderAccountNumber.charAt(0) == '1' && ReceiverAccountNumber.charAt(0) == '3') {
+                AmountMoney = AmountMoney * CurrencyRates.PLNEUR;
+            } else if (SenderAccountNumber.charAt(0) == '2' && ReceiverAccountNumber.charAt(0) == '1') {
+                AmountMoney = AmountMoney * CurrencyRates.USDPLN;
+            } else if (SenderAccountNumber.charAt(0) == '2' && ReceiverAccountNumber.charAt(0) == '3') {
+                AmountMoney = AmountMoney * CurrencyRates.USDEUR;
+            } else if (SenderAccountNumber.charAt(0) == '3' && ReceiverAccountNumber.charAt(0) == '1') {
+                AmountMoney = AmountMoney * CurrencyRates.EURPLN;
+            } else if (SenderAccountNumber.charAt(0) == '3' && ReceiverAccountNumber.charAt(0) == '2') {
+                AmountMoney = AmountMoney * CurrencyRates.EURUSD;
+            }
         }
+        String URL = "jdbc:mysql://h25.seohost.pl:3306/srv42082_java_2";
+        String Login = "srv42082_java_2";
+        String Password = "qwerty123$";
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDateTime now = LocalDateTime.now();
+        String Date = dtf.format(now);
+
+
+        String Query = "INSERT INTO `Transakcje`(`rachunek_nadawcy`, `rachunek_odbiorcy`, `kwota`, `Data`, `title`) VALUES (" + SenderAccountNumber + "," + ReceiverAccountNumber + "," + AmountMoney + "," +"'"+ Date + "'" + "," + "'" + TransactionTitle +"'" + ")";
+
+        Connection connection = DriverManager.getConnection(URL,Login,Password);
+        PreparedStatement statement = connection.prepareStatement(Query);
+        statement.execute();
+
+        Query = "UPDATE `Rachunek` SET `Dostepne_srodki`= (Dostepne_srodki - "+ AmountMoney +") WHERE `Nr_rachunku`= "+SenderAccountNumber;
+
+        statement = connection.prepareStatement(Query);
+        statement.execute();
+
+        Query = "UPDATE `Rachunek` SET `Dostepne_srodki`= (Dostepne_srodki + "+ AmountMoney +") WHERE `Nr_rachunku`= "+ReceiverAccountNumber;
+
+        statement = connection.prepareStatement(Query);
+        statement.execute();
+
     }
 
     @Override
