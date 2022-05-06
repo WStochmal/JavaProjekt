@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -57,13 +58,13 @@ public class AdminViewTransactionsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
 
-        ObservableList<TransferAdmin> items= FXCollections.observableArrayList();
+        ObservableList<TransferAdmin> items = FXCollections.observableArrayList();
 
         String URL = "jdbc:mysql://h25.seohost.pl:3306/srv42082_java_2";
         String Login = "srv42082_java_2";
         String Password = "qwerty123$";
 
-        String AccountNumber, Number, Sender, Receiver, Title, Amount, TransferDate;
+        String Number, nadawca, odbiorca, tytul, kwota, DataTransferu;
 
 
             String Query = "SELECT * FROM `Transakcje` ";
@@ -75,17 +76,25 @@ public class AdminViewTransactionsController implements Initializable {
 
                 while(resultSet.next()){
                     Number = resultSet.getString("ID");
-                    Sender = resultSet.getString("rachunek_nadawcy");
-                    Receiver = resultSet.getString("rachunek_odbiorcy");
-                    Title = resultSet.getString("title");
-                    Amount = resultSet.getString("kwota");
-                    TransferDate = resultSet.getString("Data");
+                    nadawca = resultSet.getString("rachunek_nadawcy");
+                    odbiorca = resultSet.getString("rachunek_odbiorcy");
+                    tytul = resultSet.getString("title");
+                    kwota = resultSet.getString("kwota");
+                    DataTransferu = resultSet.getString("Data");
 
-                    items.add(new TransferAdmin(Number,Sender,Receiver,Title,Amount,TransferDate));
+                    items.add(new TransferAdmin(Number,nadawca,odbiorca,tytul,kwota,DataTransferu));
                 }
 
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
+
+        table.setItems(items);
+        ID.setCellValueFactory(new PropertyValueFactory<TransferAdmin,String>("Number"));
+        Sender.setCellValueFactory(new PropertyValueFactory<TransferAdmin,String>("Sender"));
+        Receiver.setCellValueFactory(new PropertyValueFactory<TransferAdmin,String>("Receiver"));
+        Title.setCellValueFactory(new PropertyValueFactory<TransferAdmin,String>("Title"));
+        Amount.setCellValueFactory(new PropertyValueFactory<TransferAdmin,String>("Amount"));
+
     }
 }

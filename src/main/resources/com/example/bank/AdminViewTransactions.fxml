@@ -52,7 +52,7 @@
           <TableColumn fx:id="ID" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="Sender" prefWidth="297.3367614746094" text="Rachunek nadawca" />
             <TableColumn fx:id="Receiver" minWidth="4.6620330810546875" prefWidth="280.1632995605469" text="Rachunek odbiorcy" />
-            <TableColumn fx:id="Data" minWidth="4.6620330810546875" prefWidth="123.83462524414062" text="Data transakcji" />
+            <TableColumn fx:id="TransferDate" minWidth="4.6620330810546875" prefWidth="123.83462524414062" text="Data transakcji" />
             <TableColumn fx:id="Amount" minWidth="4.6620330810546875" prefWidth="136.6563720703125" text="Kwota transakcji" />
             <TableColumn fx:id="Title" minWidth="4.6620330810546875" prefWidth="236.81719970703125" text="Tytul" />
         </columns>
