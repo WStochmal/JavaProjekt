@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -19,6 +20,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
 //import java.time.Duration;
+import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
@@ -35,6 +37,11 @@ public class ControllerDesktop implements Initializable {
     private Label time;
     @FXML
     Label welcomeUser;
+    @FXML
+    ChoiceBox Saldo;
+    @FXML
+    Label Money;
+
 
     public void openDesktopPage(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Desktop.fxml"));
@@ -101,8 +108,46 @@ public class ControllerDesktop implements Initializable {
 
        initClock();
 
+       String AccountNumber = null;
+       for (int i = 0; i < Data.AccountList.size();i++){
+           AccountNumber = Data.AccountList.get(i).getAccountNumber();
+           System.out.println(Data.AccountList.get(i).getAccountNumber());
+           Saldo.getItems().add(AccountNumber);
+       }
+
 
     }
+
+    public void wyswietl() throws SQLException {
+
+        String Account = (String) Saldo.getValue();
+
+        String Query = "SELECT * FROM Rachunek WHERE Nr_rachunku = "+"'"+ Account +"'";
+        String URL = "jdbc:mysql://h25.seohost.pl:3306/srv42082_java_2";
+        String Login = "srv42082_java_2";
+        String Password = "qwerty123$";
+
+        Connection connection = DriverManager.getConnection(URL,Login,Password);
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(Query);
+
+        resultSet.next();
+        String cash = resultSet.getString("Dostepne_srodki");
+
+        String Waluta ="";
+
+        if(Account.charAt(0) == '1'){
+            Waluta = "PLN";
+        } else if (Account.charAt(0) == '2') {
+            Waluta = "USD";
+        } else if (Account.charAt(0) == '3') {
+            Waluta = "EUR";
+        }
+
+
+        Money.setText(cash + " " + Waluta);
+    }
+
     private void initClock() {
 
         Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {

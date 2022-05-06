@@ -154,7 +154,7 @@
                   </HBox>
                   <HBox prefHeight="90.0" prefWidth="800.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="87.0" prefWidth="170.0" text="Twoje Saldo:" textAlignment="CENTER">
+                        <Label alignment="CENTER" prefHeight="87.0" prefWidth="170.0" text="Wybierz rachunek" textAlignment="CENTER">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -162,15 +162,20 @@
                         <VBox prefHeight="70.0" prefWidth="322.0">
                            <children>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-                              <ChoiceBox prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: #373F48; -fx-border-width: 0px 0px 2px 0px;" />
+                              <ChoiceBox fx:id="Saldo" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: #373F48; -fx-border-width: 0px 0px 2px 0px;" />
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
                            </children>
                         </VBox>
+                        <Button mnemonicParsing="false" onAction="#wyswietl" prefHeight="89.0" prefWidth="226.0" style="-fx-background-color: #373F48 #373F48;" text="Wyświetl" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
                      </children>
                   </HBox>
                   <HBox prefHeight="50.0" prefWidth="800.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="53.0" prefWidth="187.0" text="1000000" textAlignment="CENTER">
+                        <Label fx:id="Money" alignment="CENTER" prefHeight="53.0" prefWidth="187.0" textAlignment="CENTER">
                            <font>
                               <Font size="36.0" />
                            </font>
