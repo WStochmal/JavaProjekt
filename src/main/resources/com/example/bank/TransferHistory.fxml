@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="com.example.bank.ControllerTransferHistory">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bank.ControllerTransferHistory">
     <left>
         <AnchorPane prefHeight="400.0" prefWidth="250.0" style="-fx-background-color: #373F48;" BorderPane.alignment="CENTER">
             <children>
@@ -108,7 +108,7 @@
                         </ToggleButton>
                     </children>
                 </VBox>
-                <Button graphicTextGap="10.0" layoutX="5.0" layoutY="10.0" mnemonicParsing="false" onAction="#openAccountPage" prefHeight="80.0" prefWidth="230.0" style="-fx-background-color: transparent;" text="Wojciech Stochmal" textFill="WHITE">
+                <Button fx:id="AccountButton" graphicTextGap="10.0" layoutX="5.0" layoutY="10.0" mnemonicParsing="false" onAction="#openAccountPage" prefHeight="80.0" prefWidth="230.0" style="-fx-background-color: transparent;" text="Wojciech Stochmal" textFill="WHITE">
                     <font>
                         <Font size="18.0" />
                     </font>
