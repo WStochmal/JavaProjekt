@@ -111,7 +111,6 @@ public class ControllerDesktop implements Initializable {
        String AccountNumber = null;
        for (int i = 0; i < Data.AccountList.size();i++){
            AccountNumber = Data.AccountList.get(i).getAccountNumber();
-           System.out.println(Data.AccountList.get(i).getAccountNumber());
            Saldo.getItems().add(AccountNumber);
        }
 
