@@ -86,10 +86,13 @@ public class ControllerTransfer implements Initializable {
 
         String AccountNumber = null;
         for (int i = 0; i < Data.AccountList.size();i++){
-            Data.AccountList.get(i).getAccountNumber();
+            AccountNumber = Data.AccountList.get(i).getAccountNumber();
             System.out.println(Data.AccountList.get(i).getAccountNumber());
             choiceBox.getItems().add(AccountNumber);
         }
 
+    }
+
+    public void openTransactionHistoryPage(ActionEvent event) {
     }
 }

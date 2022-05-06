@@ -59,4 +59,16 @@ public class ControllerDesktop implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         AccountButton.setText(Data.Name + " " + Data.Surname);
     }
+
+    public void openCardsPage(ActionEvent event) {
+
+    }
+
+    public void openLoanPage(ActionEvent event) {
+
+    }
+
+    public void openTransactionHistoryPage(ActionEvent event) {
+
+    }
 }
